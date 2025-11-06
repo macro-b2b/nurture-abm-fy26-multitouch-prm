@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instagram & Twitter Post Mockup</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #111214;
+      --card-2: #0f1012;
+      --text: #e6e6e6;
+      --muted: #9ca3af;
+      --line: #24262b;
+      --twitter-blue: #1d9bf0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: radial-gradient(1200px 800px at 50% -10%, #121318, var(--bg));
+      color: var(--text);
+      padding: 24px;
+    }
+
+    .phone-frame, .twitter-frame {
+      width: min(420px, 92vw);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #16181d, #0c0d10);
+      box-shadow: 0 20px 50px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04);
+      border: 1px solid #1e2126;
+      overflow: hidden;
+      margin: 0 auto 40px;
+    }
+
+    .statusbar {
+      height: 22px;
+      background: #0a0b0d;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 10px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .2px;
+    }
+
+    .insta-card {
+      background: var(--card);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #a855f7, #ec4899, #f59e0b);
+      padding: 2px;
+    }
+    .avatar > span {
+      display: block; width: 100%; height: 100%; border-radius: 50%;
+      background: #0b0c10;
+    }
+    .user {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .user strong { font-size: 14px; }
+    .user small { color: var(--muted); font-size: 12px; }
+    .header .dots {
+      margin-left: auto; color: var(--muted);
+      cursor: pointer;
+    }
+
+    .media {
+      position: relative;
+      background: #0a0a0a;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+    .media video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .actions {
+      display: flex; align-items: center; gap: 14px;
+      padding: 10px 12px 0;
+      font-size: 0;
+    }
+    .actions svg { width: 24px; height: 24px; fill: none; stroke: #e5e7eb; stroke-width: 2; }
+    .actions .right { margin-left: auto; }
+
+    .likes, .caption, .time {
+      padding: 6px 12px 0; font-size: 14px;
+    }
+    .likes { font-weight: 600; }
+    .caption b { font-weight: 600; }
+    .time { color: var(--muted); font-size: 11px; letter-spacing: .2px; padding-bottom: 12px; }
+
+    .divider { height: 1px; background: var(--line); margin: 10px 0; }
+
+    .commentbar {
+      display: flex; gap: 8px; align-items: center;
+      padding: 12px;
+      border-top: 1px solid var(--line);
+      background: var(--card-2);
+    }
+    .commentbar input {
+      flex: 1; background: #0c0d11; border: 1px solid #1d2025; color: var(--text);
+      padding: 10px 12px; border-radius: 999px; outline: none;
+    }
+    .commentbar button {
+      background: #e5e7eb; color: #0b0c10; border: 0; padding: 8px 14px; border-radius: 999px; font-weight: 600;
+      cursor: pointer;
+    }
+    .commentbar button:disabled { opacity: .4; cursor: not-allowed; }
+
+    .helper {
+      text-align: center; color: var(--muted); font-size: 12px; margin: 20px auto;
+    }
+    .helper code { background: #0e0f13; border: 1px solid #1d2025; padding: 2px 6px; border-radius: 6px; }
+
+    /* Twitter mockup */
+    .twitter-frame {
+      padding: 16px;
+      background: var(--card);
+      border-radius: 20px;
+    }
+    .tweet-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tweet-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #1d9bf0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; color: #fff;
+    }
+    .tweet-user strong { font-size: 15px; }
+    .tweet-user span { color: var(--muted); font-size: 14px; margin-left: 4px; }
+    .tweet-text { font-size: 15px; line-height: 1.4; margin-bottom: 12px; }
+    .tweet-text a { color: var(--twitter-blue); text-decoration: none; }
+    .tweet-image img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .tweet-footer {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .tweet-footer span { margin-right: 16px; }
+
+    /* LinkedIn mockup */
+.linkedin-frame {
+  width: min(600px, 95vw);
+  margin: 0 auto 40px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+.linkedin-header {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.linkedin-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #0077b5; /* LinkedIn blue */
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold;
+}
+.linkedin-user strong { font-size: 15px; }
+.linkedin-user span { font-size: 13px; color: var(--muted); margin-left: 4px; }
+.linkedin-role { font-size: 12px; color: var(--muted); }
+
+.linkedin-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.linkedin-media video {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background: #000;
+  margin-bottom: 12px;
+}
+.linkedin-footer {
+  font-size: 13px;
+  color: var(--muted);
+}
+.linkedin-footer span { margin-right: 12px; }
+
+
+  </style>
+</head>
+<body>
+  <!-- Instagram mockup -->
+   <p class="helper">Video for Macro's Instagram - 1080×1080 (1:1) format.</p>
+  <main class="phone-frame" role="main" aria-label="Instagram-style video post">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>◉ ▷ 𐄁 ⌁</span>
+    </div>
+
+    <article class="insta-card">
+      <header class="header">
+        <div class="avatar" aria-hidden="true"><span></span></div>
+        <div class="user">
+          <strong>@macromator</strong>
+          <small>Toronto, Ontario</small>
+        </div>
+        <div class="dots" aria-label="More options">⋯</div>
+      </header>
+
+      <div class="media" title="Video">
+        <video id="postVideo" src="video/Nurture-ABM-Socials-MultiTouch-1080x1080-IG-LinkIn-1.mp4" preload="metadata" playsinline controls muted></video>
+      </div>
+
+      <div class="actions">
+        <svg viewBox="0 0 24 24" aria-label="Like"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <svg viewBox="0 0 24 24" aria-label="Comment"><path d="M21 15a4 4 0 0 1-4 4H8l-5 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        <svg class="right" viewBox="0 0 24 24" aria-label="Save"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </div>
+
+      <div class="likes">1,248 likes</div>
+      <div class="caption">
+Lack channel control? 😥 Multi-touch campaigns are your secret weapon for reaching customers effectively!
+
+At MACRO, we specialize in building coordinated campaigns that ensure consistent messaging across every touchpoint, from email to social, display to web. It's about increasing engagement, lead quality, and partner satisfaction.
+<br><br>
+Ready to amplify your reach and improve ROI?  <br><br> #macromator #b2b #b2bmarketingspecialist #macro #marketingexperts #b2bmarketingexperts #MultiTouchCampaigns #MarketingStrategy #ChannelPartners #PartnerMarketing #MACROMarketing #DigitalMarketing #CustomerJourney
+      </div>
+      <div class="time">Posted • Just now</div>
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="commentbar">
+        <div class="avatar" aria-hidden="true" style="width:28px;height:28px"><span></span></div>
+        <input placeholder="Add a comment…" aria-label="Add a comment" />
+        <button disabled>Post</button>
+      </div>
+    </article>
+  </main>
+
+  <br>
+<p class="helper">Post for Macro's Twitter - 1200×600 format.</p>
+  <!-- Twitter mockup -->
+  <article class="twitter-frame">
+    <div class="tweet-header">
+      <div class="tweet-avatar">M</div>
+      <div class="tweet-user">
+        <strong>Macromator</strong><span>@macromator · 1h</span>
+      </div>
+    </div>
+    <div class="tweet-text">
+
+Lack channel control? 🤔 Multi-touch campaigns drive consistent messaging across ALL your channels! Email, social, display, web, we coordinate it all.<br>
+<br>
+Boost engagement, lead quality & partner satisfaction with MACRO 
+<a style="text-decoration: underline; color: #1598df;" href="https://www.macromator.com/partner-marketing/partner-portals" target="_blank" rel="noopener noreferrer">Partner Relationship Marketing Specialists</a>
+
+ 
+<br><br>      <a href="#">#macromator</a> <a href="#">#b2b</a> <a href="#">#macromator #b2b #fractionalteam #b2bmarketingspecialist #macro #marketingexperts #b2bmarketingexperts #MultiTouch #MarketingTips #ChannelPartners #MACROMarketing</a> 
+    </div>
+    <div class="tweet-image">
+      <img src="images/NurtureABMSocials-MultiTouch-1200x600-Twitter.png" alt="Twitter mockup post">
+    </div>
+    <div class="tweet-footer">
+      <span>12 Retweets</span>
+      <span>34 Likes</span>
+    </div>
+  </article>
+
+  <br>
+   <p class="helper">Post for Macro's LinkedIn - 1080×1080 video format.</p>
+
+    <!-- LinkedIn mockup -->
+  <article class="linkedin-frame">
+    <div class="linkedin-header">
+      <div class="linkedin-avatar">M</div>
+      <div class="linkedin-user">
+        <strong>Macromator</strong>
+        <span>· 1h · <span class="linkedin-icon">in</span></span>
+        <div class="linkedin-role">Marketing Solutions · Toronto, ON</div>
+      </div>
+    </div>
+    <div class="linkedin-text">
+      Lack channel control? 🧐 Many businesses struggle with orchestrating a cohesive message across diverse marketing channels. That's where multi-touch campaigns, when executed correctly, become a game-changer.
+      <br><br>
+At MACRO, we empower businesses with specialist-led multi-touch campaigns that bring precision and impact. We focus on:
+
+Consistent Messaging: Unifying your brand voice across email, social, display, and web.
+
+Co-branded Alignment: Ensuring vendor and partner goals are perfectly in sync.
+
+Actionable Analytics: Measuring engagement to continuously optimize your ROI.
+
+Effortless Configuration: Making multi-step campaigns simple to implement.
+
+Effective multi-touch strategies don't just increase engagement and lead quality; they significantly boost partner satisfaction.
+
+<br><br>
+      <strong>Ready to transform your marketing reach? Learn how MACRO helps you achieve seamless channel control.</strong>
+      <br><br>
+      #macromator #b2b #fractionalteam #b2bmarketingspecialist #macro #marketingexperts #b2bmarketingexperts #MultiTouchMarketing #ChannelMarketing #PartnerPrograms #MarketingStrategy #DigitalTransformation #MACROSpecialists #B2BMarketing
+    </div>
+    <div class="linkedin-media">
+      <video src="video/Nurture-ABM-Socials-MultiTouch-1080x1080-IG-LinkIn-1.mp4" playsinline controls muted></video>
+    </div>
+    <div class="linkedin-footer">
+      <span>24 Likes</span> · <span>6 Comments</span> · <span>2 Shares</span>
+    </div>
+  </article>
+ 
+
+
+</body>
+</html>
